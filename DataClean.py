@@ -11,8 +11,9 @@ symptom_cols = filtered_df.columns.drop('diseases')
 
 cols_to_keep = symptom_cols[filtered_df[symptom_cols].sum() > 0] #checks for all 0 columns by summing
 filtered_df = filtered_df[['diseases'] + list(cols_to_keep)]
+filtered_df = filtered_df.drop_duplicates()
 
-#number of columns/before after data cleaning (getting rid of 0 columns)
+#number of columns/before after data cleaning (getting rid of 0 columns and duplicates)
 print(f"Columns before: 377")
 print(f"Columns after: {len(cols_to_keep)}")
 
